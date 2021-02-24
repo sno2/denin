@@ -41,9 +41,9 @@ export async function fetchStats(
   const res = await fetch(
     `${API_URL}/stats`,
     {
+      headers: HEADERS,
       ...init,
       method: "GET",
-      headers: HEADERS,
     },
   );
   return await res.json() as StatsData;

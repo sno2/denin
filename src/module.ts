@@ -94,9 +94,9 @@ export async function fetchModules(
   const res = await fetch(
     `${API_URL}/modules?${params.toString()}`,
     {
+      headers: HEADERS,
       ...init,
       method: "GET",
-      headers: HEADERS,
     },
   );
   const json = await res.json();
