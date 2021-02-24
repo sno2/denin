@@ -1,4 +1,4 @@
-import { API_URL, USER_AGENT } from "./_utils/const.ts";
+import { API_URL, HEADERS } from "./_utils/const.ts";
 import { DataResponse, ErrorResposne } from "./_utils/base.ts";
 
 export interface ModuleData extends DataResponse {
@@ -26,9 +26,8 @@ export async function fetchModule(
     `${API_URL}/modules/${encodeURI(name.trim().replace(/\//g, ""))}`,
     {
       ...init,
-      headers: {
-        "User-Agent": USER_AGENT,
-      },
+      method: "GET",
+      headers: HEADERS,
     },
   );
   const json = await res.json();
@@ -96,9 +95,8 @@ export async function fetchModules(
     `${API_URL}/modules?${params.toString()}`,
     {
       ...init,
-      headers: {
-        "User-Agent": USER_AGENT,
-      },
+      method: "GET",
+      headers: HEADERS,
     },
   );
   const json = await res.json();

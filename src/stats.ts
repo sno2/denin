@@ -1,4 +1,4 @@
-import { API_URL, USER_AGENT } from "./_utils/const.ts";
+import { API_URL, HEADERS } from "./_utils/const.ts";
 import { DataResponse } from "./_utils/base.ts";
 
 export interface RecentlyAdded {
@@ -42,9 +42,8 @@ export async function fetchStats(
     `${API_URL}/stats`,
     {
       ...init,
-      headers: {
-        "User-Agent": USER_AGENT,
-      },
+      method: "GET",
+      headers: HEADERS,
     },
   );
   return await res.json() as StatsData;
