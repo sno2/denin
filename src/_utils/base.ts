@@ -4,7 +4,7 @@ export interface BaseResponse {
 }
 
 /** The base of every error response from https://api.deno.land. */
-export interface ErrorResposne extends BaseResponse {
+export interface ErrorResponse extends BaseResponse {
   error: string;
 }
 

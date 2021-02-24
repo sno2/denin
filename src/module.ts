@@ -1,5 +1,5 @@
 import { API_URL, HEADERS } from "./_utils/const.ts";
-import { DataResponse, ErrorResposne } from "./_utils/base.ts";
+import { DataResponse, ErrorResponse } from "./_utils/base.ts";
 
 export interface ModuleData extends DataResponse {
   data: {
@@ -21,7 +21,7 @@ export interface ModuleData extends DataResponse {
 export async function fetchModule(
   name: string,
   init?: RequestInit,
-): Promise<ModuleData | ErrorResposne> {
+): Promise<ModuleData | ErrorResponse> {
   const res = await fetch(
     `${API_URL}/modules/${encodeURI(name.trim().replace(/\//g, ""))}`,
     {
@@ -33,7 +33,7 @@ export async function fetchModule(
   const json = await res.json();
 
   if (res.ok) return json as ModuleData;
-  else return json as ErrorResposne;
+  else return json as ErrorResponse;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -83,7 +83,7 @@ export interface ModuleListData extends DataResponse {
 export async function fetchModules(
   options: SearchOptions,
   init?: RequestInit,
-): Promise<ModuleListData | ErrorResposne> {
+): Promise<ModuleListData | ErrorResponse> {
   const params = new URLSearchParams();
 
   params.set("limit", `${options.limit}`);
@@ -102,5 +102,5 @@ export async function fetchModules(
   const json = await res.json();
 
   if (res.ok) return json as ModuleListData;
-  else return json as ErrorResposne;
+  else return json as ErrorResponse;
 }
